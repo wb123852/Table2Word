@@ -1,6 +1,7 @@
 package com.wangbo.table2word.util;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
@@ -23,6 +24,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class DateToWordUtil {
 
+    private static final String dirPath = System.getProperty("user.dir") + "/out/";
+
     @Value("${database}")
     private String dataName;
 
@@ -34,8 +37,14 @@ public class DateToWordUtil {
         // 创建word文档,并设置纸张的大小
         Document document = new Document(PageSize.A4);
         try {
+
+            File file = new File(dirPath);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+
             // 创建word文档
-            RtfWriter2.getInstance(document, new FileOutputStream(System.getProperty("user.dir") + "/out/" + dataName + ".doc"));
+            RtfWriter2.getInstance(document, new FileOutputStream(dirPath + dataName + ".doc"));
             document.open();
 
             Paragraph ph = new Paragraph();

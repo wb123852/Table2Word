@@ -10,7 +10,7 @@ springboot + mybatis + mysql
 #### 使用说明
 1. git clone https://github.com/wb123852/Table2Word.git
 2. cd Table2Word
-3. mvn clean package
+3. mvn clean package -Dmaven.test.skip
 4. java -jar target/table2word.jar --url=127.0.0.1:3306 --database=dev --user=root --password=123456
 5. 数据库文档生成在out目录下
 
